@@ -1,6 +1,7 @@
 import os
 from langchain.document_loaders import TextLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+#from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
@@ -10,7 +11,12 @@ from langchain.llms import Ollama
 def load_documents(file_path):
     loader = TextLoader(file_path)
     documents = loader.load()
-    splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
+    splitter = CharacterTextSplitter(
+    separator="\n",       # or "\n\n" if your text has paragraph breaks
+    chunk_size=500,
+    chunk_overlap=100)
+
+    #splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
     return splitter.split_documents(documents)
 
 # Step 2: Create vector store using ChromaDB and HuggingFace embeddings
@@ -48,4 +54,5 @@ def main():
         print(f"\n📣 Answer: {response}")
 
 if __name__ == "__main__":
+
     main()
