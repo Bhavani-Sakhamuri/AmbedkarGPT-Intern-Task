@@ -14,7 +14,7 @@ This project demonstrates a fully local Retrieval-Augmented Generation (RAG) pip
 
 ### 1. Clone the Repository
 
-git clone https://github.com/your-username/rag-ollama-mistral.git cd rag-ollama-mistral
+git clone https://github.com/Bhavani-Sakhamuri/rag-ollama-mistral.git cd rag-ollama-mistral
 
 ### 2. Install Dependencies
 
@@ -37,5 +37,6 @@ Place your speech.txt file in the root directory
 python main.py
 
 Ask questions about the document interactively!
+
 
 
